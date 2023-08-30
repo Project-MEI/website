@@ -1,87 +1,34 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getAsset, getHomePermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'About',
       links: [
         {
-          text: 'Sass',
-          href: getPermalink('/homes/saas'),
-        },
+			text: 'Shogun',
+			href: getPermalink('/about'),
+		},
         {
-          text: 'Startup',
+          text: 'Project MEI',
           href: getPermalink('/homes/startup'),
         },
         {
-          text: 'Mobile App',
+          text: 'The Founders',
           href: getPermalink('/homes/mobile-app'),
         },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
       ],
     },
     {
-      text: 'Pages',
+      text: 'Support',
       links: [
         {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
+			text: 'Contact',
+			href: getPermalink('/contact'),
+		},
         {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
-          href: getPermalink('/about'),
-        },
-        {
-          text: 'Contact',
+          text: 'Support Server',
           href: getPermalink('/contact'),
-        },
-        {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
-        },
-      ],
-    },
-    {
-      text: 'Landing',
-      links: [
-        {
-          text: 'Lead Generation',
-          href: getPermalink('/landing/lead-generation'),
-        },
-        {
-          text: 'Long-form Sales',
-          href: getPermalink('/landing/sales'),
-        },
-        {
-          text: 'Click-Through',
-          href: getPermalink('/landing/click-through'),
-        },
-        {
-          text: 'Product Details (or Services)',
-          href: getPermalink('/landing/product'),
-        },
-        {
-          text: 'Coming Soon or Pre-Launch',
-          href: getPermalink('/landing/pre-launch'),
-        },
-        {
-          text: 'Subscription',
-          href: getPermalink('/landing/subscription'),
         },
       ],
     },
@@ -111,11 +58,28 @@ export const headerData = {
       ],
     },
     {
-      text: 'Widgets',
-      href: '#',
+      text: 'Dashboard',
+      href: 'https://dash.project-mei.xyz',
     },
+	{
+		text: 'Monitoring',
+		links: [
+		  {
+			text: 'Grafana',
+			href: 'https://graph.project-mei.xyz/',
+		  },
+		  {
+			text: 'Monitoring',
+			href: 'https://status.project-mei.xyz',
+		  },
+		  {
+			text: 'VPS Dashboard',
+			href: 'https://home.project-mei.xyz/',
+		  },
+		],
+	  },
   ],
-  actions: [{ type: 'button', text: 'Download', href: 'https://github.com/onwidget/astrowind' }],
+  actions: [{ type: 'button', text: 'Invite Shogun', href: 'https://dsc.gg/shogun' }],
 };
 
 export const footerData = {
@@ -123,45 +87,25 @@ export const footerData = {
     {
       title: 'Product',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
-      ],
-    },
-    {
-      title: 'Platform',
-      links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Features', href: getHomePermalink()+'#features' },
+		{ text: 'Source', href: '#' },
       ],
     },
     {
       title: 'Support',
       links: [
         { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
+        { text: 'Discord Server', href: '#' },
         { text: 'Status', href: '#' },
+		{ text: 'Contribute', href: '#' },
       ],
     },
     {
-      title: 'Company',
+      title: 'Background',
       links: [
         { text: 'About', href: '#' },
         { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: 'Team', href: '#' },
       ],
     },
   ],
@@ -170,14 +114,13 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+	{ ariaLabel: 'Email', icon: 'tabler:mail-filled', href: 'mailto:raiden@project-mei.xyz' },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/project-mei' },
+	{ ariaLabel: 'Discord', icon: 'tabler:brand-discord-filled', href: 'https://dsc.gg/transience' },
   ],
   footNote: `
-    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
-    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url('~/assets/images/raiden.png')]"></span>
+    &copy; <a class="text-blue-600 hover:underline dark:text-gray-200">Raiden</a> & <a class="text-blue-600 hover:underline dark:text-gray-200">Ayaya</a> · All rights reserved.
   `,
 };

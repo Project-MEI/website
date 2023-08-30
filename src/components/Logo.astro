@@ -3,5 +3,7 @@ import { SITE_CONFIG } from '~/utils/config';
 ---
 
 <span class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white">
-  🚀 {SITE_CONFIG?.name}
+	<img class="hidden dark:hidden" src="src/assets/favicons/logo.png" alt="Your Logo" width="50rem" />
+	<img class="inline light:inline" src="src/assets/favicons/logo.png" alt="Your Logo" width="50rem" />
+	{SITE_CONFIG?.name}
 </span>

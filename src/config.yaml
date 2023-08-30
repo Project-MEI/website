@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Project MEI
+  site: 'https://project-mei.xyz/'
   base: '/'
   trailingSlash: false
 
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Project MEI
+    template: '%s — Shogun'
+  description: "\U0001F680 Project MEI and Shogun landing page."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Project MEI
     images:
       - url: '~/assets/images/default.png'
         width: 1200
@@ -33,7 +33,7 @@ i18n:
 
 apps:
   blog:
-    isEnabled: true
+    isEnabled: false
     postsPerPage: 6
 
     post:
