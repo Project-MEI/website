@@ -11,7 +11,7 @@ metadata:
   title:
     default: Project MEI
     template: '%s — Shogun'
-  description: "\U0001F680 Project MEI and Shogun landing page."
+  description: "Project MEI and Shogun landing page."
   robots:
     index: true
     follow: true
