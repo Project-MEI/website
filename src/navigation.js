@@ -14,7 +14,7 @@ export const headerData = {
           href: getPermalink('/homes/startup'),
         },
         {
-          text: 'The Founders',
+          text: 'The Founder',
           href: getPermalink('/homes/mobile-app'),
         },
       ],
