@@ -22,8 +22,21 @@ const metadata = {
   <Hero
     callToAction={{ text: 'Join Discord', href: 'https://dsc.gg/transience', icon: 'tabler:brand-discord-filled' }}
     callToAction2={{ text: 'Learn more', href: '#features' }}
-    image={{ src: '~/assets/images/hero.png', alt: 'Hero Image' }}
   >
+	<Fragment slot="image">
+		<div class="relative h-0 pb-[56.25%]">
+		<iframe
+			width="560"
+			height="315"
+			src="https://www.youtube.com/embed/hQ5GEOlwLUQ"
+			title="YouTube video player"
+			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+			allowfullscreen
+			class="absolute top-0 left-0 w-full h-full"
+		>
+		</iframe>
+		</div>
+	</Fragment>
     <Fragment slot="title">
       <span class="text-accent dark:text-white highlight">Project MEI</span> | Empowering creativity <span class="hidden xl:inline"
         >through passion</span
@@ -58,12 +71,12 @@ const metadata = {
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      src: '~/assets/images/about-mei.jpg',
       alt: 'Colorful Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About us</h3>
       <p>
         Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each
         pixel becomes a brushstroke in the canvas of imagination.

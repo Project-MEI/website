@@ -4,7 +4,7 @@ import { Form } from '~/types';
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props as Form;
 ---
 
-<form data-netlify="true">
+<form data-netlify="true" data-netlify-recaptcha="true">
   {
     inputs &&
       inputs.map(
@@ -54,6 +54,8 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
             id="disclaimer"
             name="disclaimer"
             type="checkbox"
+			disabled="disabled" 
+			checked="checked"
             class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
           />
         </div>
@@ -65,6 +67,8 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
       </div>
     )
   }
+
+  <div data-netlify-recaptcha="true"></div>
 
   {
     button && (

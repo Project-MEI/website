@@ -6,16 +6,8 @@ export const headerData = {
       text: 'About',
       links: [
         {
-			text: 'Shogun',
-			href: getPermalink('/about'),
-		},
-        {
           text: 'Project MEI',
-          href: getPermalink('/homes/startup'),
-        },
-        {
-          text: 'The Founder',
-          href: getPermalink('/homes/mobile-app'),
+          href: getPermalink('/about/project-mei'),
         },
       ],
     },
@@ -23,12 +15,12 @@ export const headerData = {
       text: 'Support',
       links: [
         {
-			text: 'Contact',
+			text: 'Contact Form',
 			href: getPermalink('/contact'),
 		},
         {
-          text: 'Support Server',
-          href: getPermalink('/contact'),
+          text: 'Discord Server',
+          href: 'https://dsc.gg/transience',
         },
       ],
     },
@@ -36,24 +28,8 @@ export const headerData = {
       text: 'Blog',
       links: [
         {
-          text: 'Blog List',
+          text: 'MEI\'s Corner',
           href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
         },
       ],
     },
@@ -95,17 +71,16 @@ export const footerData = {
       title: 'Support',
       links: [
         { text: 'Docs', href: '#' },
-        { text: 'Discord Server', href: '#' },
-        { text: 'Status', href: '#' },
-		{ text: 'Contribute', href: '#' },
+        { text: 'Discord Server', href: 'https://dsc.gg/transience' },
+        { text: 'Status', href: 'https://status.project-mei.xyz' },
+		{ text: 'Contribute', href: 'https://ko-fi.com/raidensakura' },
       ],
     },
     {
       title: 'Background',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Team', href: '#' },
+        { text: 'About', href: getPermalink('about/project-mei') },
+        { text: 'Blog', href: getBlogPermalink('') },
       ],
     },
   ],
