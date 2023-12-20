@@ -31,6 +31,10 @@ export const headerData = {
           text: 'MEI\'s Corner',
           href: getBlogPermalink(),
         },
+		{
+			text: 'Raiden\'s Blog',
+			href: 'https://blog.project-mei.xyz/',
+		  },
       ],
     },
     {
