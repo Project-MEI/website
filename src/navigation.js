@@ -34,7 +34,7 @@ export const headerData = {
 		{
 			text: 'Raiden\'s Blog',
 			href: 'https://blog.project-mei.xyz/',
-		  },
+		},
       ],
     },
     {
