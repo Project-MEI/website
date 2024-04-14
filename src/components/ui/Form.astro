@@ -1,7 +1,8 @@
 ---
-import { Form } from '~/types';
+import type { Form as Props } from '~/types';
+import Button from '~/components/ui/Button.astro';
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props as Form;
+const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
 ---
 
 <form data-netlify="true" data-netlify-recaptcha="true">
@@ -37,7 +38,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
         </label>
         <textarea
           id="textarea"
-          name="textarea"
+          name={textarea.name ? textarea.name : 'message'}
           rows={textarea.rows ? textarea.rows : 4}
           placeholder={textarea.placeholder}
           class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
@@ -73,9 +74,9 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     button && (
       <div class="mt-10 grid">
-        <button type="submit" class="btn btn-primary cursor-pointer">
+        <Button type="submit" class="btn btn-primary cursor-pointer">
           {button}
-        </button>
+        </Button>
       </div>
     )
   }

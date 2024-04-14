@@ -1,7 +1,8 @@
+import type { PaginateFunction } from 'astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Post } from '~/types';
-import { APP_BLOG_CONFIG } from '~/utils/config';
+import { APP_BLOG } from 'astrowind:config';
 import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
 
 const generatePermalink = async ({
@@ -89,6 +90,18 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
   };
 };
 
+const getRandomizedPosts = (array: Post[], num: number) => {
+  const newArray: Post[] = [];
+
+  while (newArray.length < num && array.length > 0) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    newArray.push(array[randomIndex]);
+    array.splice(randomIndex, 1);
+  }
+
+  return newArray;
+};
+
 const load = async function (): Promise<Array<Post>> {
   const posts = await getCollection('post');
   const normalizedPosts = posts.map(async (post) => await getNormalizedPost(post));
@@ -103,18 +116,19 @@ const load = async function (): Promise<Array<Post>> {
 let _posts: Array<Post>;
 
 /** */
-export const isBlogEnabled = APP_BLOG_CONFIG.isEnabled;
-export const isBlogListRouteEnabled = APP_BLOG_CONFIG.list.isEnabled;
-export const isBlogPostRouteEnabled = APP_BLOG_CONFIG.post.isEnabled;
-export const isBlogCategoryRouteEnabled = APP_BLOG_CONFIG.category.isEnabled;
-export const isBlogTagRouteEnabled = APP_BLOG_CONFIG.tag.isEnabled;
+export const isBlogEnabled = APP_BLOG.isEnabled;
+export const isRelatedPostsEnabled = APP_BLOG.isRelatedPostsEnabled;
+export const isBlogListRouteEnabled = APP_BLOG.list.isEnabled;
+export const isBlogPostRouteEnabled = APP_BLOG.post.isEnabled;
+export const isBlogCategoryRouteEnabled = APP_BLOG.category.isEnabled;
+export const isBlogTagRouteEnabled = APP_BLOG.tag.isEnabled;
 
-export const blogListRobots = APP_BLOG_CONFIG.list.robots;
-export const blogPostRobots = APP_BLOG_CONFIG.post.robots;
-export const blogCategoryRobots = APP_BLOG_CONFIG.category.robots;
-export const blogTagRobots = APP_BLOG_CONFIG.tag.robots;
+export const blogListRobots = APP_BLOG.list.robots;
+export const blogPostRobots = APP_BLOG.post.robots;
+export const blogCategoryRobots = APP_BLOG.category.robots;
+export const blogTagRobots = APP_BLOG.tag.robots;
 
-export const blogPostsPerPage = APP_BLOG_CONFIG?.postsPerPage;
+export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 
 /** */
 export const fetchPosts = async (): Promise<Array<Post>> => {
@@ -162,7 +176,7 @@ export const findLatestPosts = async ({ count }: { count?: number }): Promise<Ar
 };
 
 /** */
-export const getStaticPathsBlogList = async ({ paginate }) => {
+export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
   return paginate(await fetchPosts(), {
     params: { blog: BLOG_BASE || undefined },
@@ -173,7 +187,7 @@ export const getStaticPathsBlogList = async ({ paginate }) => {
 /** */
 export const getStaticPathsBlogPost = async () => {
   if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
-  return (await fetchPosts()).map((post) => ({
+  return (await fetchPosts()).flatMap((post) => ({
     params: {
       blog: post.permalink,
     },
@@ -182,16 +196,16 @@ export const getStaticPathsBlogPost = async () => {
 };
 
 /** */
-export const getStaticPathsBlogCategory = async ({ paginate }) => {
+export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const categories = new Set();
+  const categories = new Set<string>();
   posts.map((post) => {
     typeof post.category === 'string' && categories.add(post.category.toLowerCase());
   });
 
-  return Array.from(categories).map((category: string) =>
+  return Array.from(categories).flatMap((category) =>
     paginate(
       posts.filter((post) => typeof post.category === 'string' && category === post.category.toLowerCase()),
       {
@@ -204,16 +218,16 @@ export const getStaticPathsBlogCategory = async ({ paginate }) => {
 };
 
 /** */
-export const getStaticPathsBlogTag = async ({ paginate }) => {
+export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }) => {
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const tags = new Set();
+  const tags = new Set<string>();
   posts.map((post) => {
     Array.isArray(post.tags) && post.tags.map((tag) => tags.add(tag.toLowerCase()));
   });
 
-  return Array.from(tags).map((tag: string) =>
+  return Array.from(tags).flatMap((tag) =>
     paginate(
       posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.toLowerCase() === tag)),
       {
@@ -224,3 +238,23 @@ export const getStaticPathsBlogTag = async ({ paginate }) => {
     )
   );
 };
+
+/** */
+export function getRelatedPosts(allPosts: Post[], currentSlug: string, currentTags: string[]) {
+  if (!isBlogEnabled || !isRelatedPostsEnabled) return [];
+
+  const relatedPosts = getRandomizedPosts(
+    allPosts.filter((post) => post.slug !== currentSlug && post.tags?.some((tag) => currentTags.includes(tag))),
+    APP_BLOG.relatedPostsCount
+  );
+
+  if (relatedPosts.length < APP_BLOG.relatedPostsCount) {
+    const morePosts = getRandomizedPosts(
+      allPosts.filter((post) => post.slug !== currentSlug && !post.tags?.some((tag) => currentTags.includes(tag))),
+      APP_BLOG.relatedPostsCount - relatedPosts.length
+    );
+    relatedPosts.push(...morePosts);
+  }
+
+  return relatedPosts;
+}

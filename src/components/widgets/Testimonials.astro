@@ -1,9 +1,9 @@
 ---
 import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import CTA from '~/components/ui/CTA.astro';
+import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
-import type { Testimonials } from '~/types';
+import type { Testimonials as Props } from '~/types';
 
 
 const {
@@ -17,7 +17,7 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
-} = Astro.props as Testimonials;
+} = Astro.props;
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -45,7 +45,7 @@ const {
                       <Fragment set:html={image} />
                     ) : (
                       <Image
-                        class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600"
+                        class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
                         width={40}
                         height={40}
                         widths={[400, 768]}
@@ -68,8 +68,8 @@ const {
   </div>
   {
     callToAction && (
-      <div class="btn flex justify-center mx-auto w-fit mt-8 md:mt-12 font-medium">
-        <CTA callToAction={callToAction} />
+      <div class="flex justify-center mx-auto w-fit mt-8 md:mt-12 font-medium">
+        <Button {...callToAction} />
       </div>
     )
   }

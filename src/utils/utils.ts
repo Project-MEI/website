@@ -1,21 +1,13 @@
-import { I18N_CONFIG } from '~/utils/config';
+import { I18N } from 'astrowind:config';
 
-const formatter =
-  I18N_CONFIG?.dateFormatter ||
-  new Intl.DateTimeFormat('en', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    timeZone: 'UTC',
-  });
+export const formatter: Intl.DateTimeFormat = new Intl.DateTimeFormat(I18N?.language, {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
 
-/* eslint-disable no-mixed-spaces-and-tabs */
-export const getFormattedDate = (date: Date) =>
-  date
-    ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      /* @ts-ignore */
-      formatter.format(date)
-    : '';
+export const getFormattedDate = (date: Date): string => (date ? formatter.format(date) : '');
 
 export const trim = (str = '', ch?: string) => {
   let start = 0,
@@ -29,7 +21,7 @@ export const trim = (str = '', ch?: string) => {
 export const toUiAmount = (amount: number) => {
   if (!amount) return 0;
 
-  let value;
+  let value: string;
 
   if (amount >= 1000000000) {
     const formattedNumber = (amount / 1000000000).toFixed(1);

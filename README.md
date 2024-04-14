@@ -3,23 +3,21 @@
 <img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/lighthouse-score.png" align="right"
      alt="AstroWind Lighthouse Score" width="100" height="358">
 
-🌟 _Most *starred* & *forked* Astro theme in 2022_. 🌟
+🌟 _Most *starred* & *forked* Astro theme in 2022 & 2023_. 🌟
 
-**AstroWind** is a free and open-source template to make your website using **[Astro 2.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
+**AstroWind** is a free and open-source template to make your website using **[Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account web best practices.
 
-## Features
-
-- ✅ Integration with **Tailwind CSS** ([@astrojs/tailwind](https://docs.astro.build/en/guides/integrations-guide/tailwind/)) supporting **Dark mode** and ***RTL***.
-- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports.
-- ✅ **Fast and SEO friendly blog** with automatic **RSS feed** ([@astrojs/rss](https://docs.astro.build/en/guides/rss/)), [**MDX** support](https://docs.astro.build/en/guides/integrations-guide/mdx/), **Categories & Tags**, **Social Share**, ...
-- ✅ **Image Optimization** (using new [Astro Assets](https://astro.build/blog/images/) and [Unpic](https://unpic.pics/lib/) for Universal image CDN) and **Font optimization**.
-- ✅ Generation of **project sitemap** based on your routes ([@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)).
+- ✅ **Production-ready** scores in **PageSpeed Insights** reports.
+- ✅ Integration with **Tailwind CSS** supporting **Dark mode** and **_RTL_**.
+- ✅ **Fast and SEO friendly blog** with automatic **RSS feed**, **MDX** support, **Categories & Tags**, **Social Share**, ...
+- ✅ **Image Optimization** (using new **Astro Assets** and **Unpic** for Universal image CDN).
+- ✅ Generation of **project sitemap** based on your routes.
 - ✅ **Open Graph tags** for social media sharing.
 - ✅ **Analytics** built-in Google Analytics, and Splitbee integration.
 
 <br>
 
-<img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/screenshot-astro2.jpg" alt="AstroWind Theme Screenshot">
+<img src="https://raw.githubusercontent.com/onwidget/.github/main/resources/astrowind/screenshot-astrowind-1.png" alt="AstroWind Theme Screenshot">
 
 [![onWidget](https://custom-icon-badges.demolab.com/badge/made%20by%20-onWidget-556bf2?style=flat-square&logo=onwidget&logoColor=white&labelColor=101827)](https://onwidget.com)
 [![License](https://img.shields.io/github/license/onwidget/astrowind?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/onwidget/astrowind/blob/main/LICENSE.md)
@@ -35,6 +33,7 @@
 <summary>Table of Contents</summary>
 
 - [Demo](#demo)
+- [Upcoming: AstroWind 2.0 – We Need Your Vision!](#-upcoming-astrowind-20--we-need-your-vision)
 - [Getting started](#getting-started)
   - [Project structure](#project-structure)
   - [Commands](#commands)
@@ -56,15 +55,25 @@
 
 <br>
 
+## 🔔 Upcoming: AstroWind 2.0 – We Need Your Vision!
+
+We're embarking on an exciting journey with **AstroWind 2.0**, and we want you to be a part of it! We're currently taking the first steps in developing this new version and your insights are invaluable. Join the discussion and share your feedback, ideas, and suggestions to help shape the future of **AstroWind**. Let's make **AstroWind 2.0** even better, together!
+
+[Share Your Feedback in Our Discussion!](https://github.com/onwidget/astrowind/discussions/392)
+
+<br>
+
 ## Getting started
 
-**AstroWind** tries to give you quick access to creating a website using [Astro 2.0](https://astro.build/blog/astro-2/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme focuses on simplicity, good practices and high performance.
+**AstroWind** tries to give you quick access to creating a website using [Astro 4.0](https://astro.build/) + [Tailwind CSS](https://tailwindcss.com/). It's a free theme which focuses on simplicity, good practices and high performance.
 
-Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals..
+Very little vanilla javascript is used only to provide basic functionality so that each developer decides which framework (React, Vue, Svelte, Solid JS...) to use and how to approach their goals.
+
+In this version the template supports all the options in the `output` configuration, `static`, `hybrid` and `server`, but the blog only works with `prerender = true`. We are working on the next version and aim to make it fully compatible with SSR.
 
 ### Project structure
 
-Inside AstroWind template, you'll see the following folders and files:
+Inside **AstroWind** template, you'll see the following folders and files:
 
 ```
 /
@@ -121,9 +130,9 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
 
-[![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/astrowind/tree/main)
+[![Edit AstroWind on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/astrowind/tree/main) [![Open in Gitpod](https://svgshare.com/i/xdi.svg)](https://gitpod.io/?on=gitpod#https://github.com/onwidget/astrowind) [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/onwidget/astrowind)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Update `config.mjs` and contents. Have fun!
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file `README.md`. Update `src/config.yaml` and contents. Have fun!
 
 <br>
 
@@ -168,7 +177,7 @@ metadata:
   openGraph:
     site_name: 'Example'
     images:
-      - url: '~/assets/images/default.jpg'
+      - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
@@ -183,8 +192,8 @@ i18n:
 
 apps:
   blog:
-    isEnabled: true
-    postsPerPage: 6
+    isEnabled: true # If the blog will be enabled
+    postsPerPage: 6 # Number of posts per page
 
     post:
       isEnabled: true
@@ -210,6 +219,9 @@ apps:
       robots:
         index: false
 
+    isRelatedPostsEnabled: true # If a widget with related posts is to be displayed below each post
+    relatedPostsCount: 4 # Number of related posts to display
+
 analytics:
   vendors:
     googleAnalytics:
@@ -220,6 +232,13 @@ ui:
 ```
 
 <br>
+
+#### Customize Design
+
+To customize Font families, Colors or more Elements refer to the following files:
+
+- `src/components/CustomStyles.astro`
+- `src/assets/styles/tailwind.css`
 
 ### Deploy
 
@@ -259,7 +278,7 @@ Clone this repository on own GitHub account and deploy to Vercel:
 
 ## Related projects
 
-- [TailNext](https://tailnext.vercel.app/) - Free template using Next.js 13 and Tailwind CSS with the new App Router.
+- [TailNext](https://tailnext.vercel.app/) - Free template using Next.js 14 and Tailwind CSS with the new App Router.
 - [Qwind](https://qwind.pages.dev/) - Free template to make your website using Qwik + Tailwind CSS.
 
 ## Contributing

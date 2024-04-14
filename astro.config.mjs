@@ -1,34 +1,30 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { defineConfig } from 'astro/config';
+import { defineConfig, squooshImageService } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
-import compress from 'astro-compress';
 import icon from 'astro-icon';
-import tasks from "./src/utils/tasks";
+import compress from '@playform/compress';
 
-import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
+import astrowind from './vendor/integration';
 
-import { ANALYTICS_CONFIG, SITE_CONFIG } from './src/utils/config.ts';
+import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const hasExternalScripts = false;
 const whenExternalScripts = (items = []) =>
-  ANALYTICS_CONFIG.vendors.googleAnalytics.id && ANALYTICS_CONFIG.vendors.googleAnalytics.partytown
+  hasExternalScripts
     ? Array.isArray(items)
       ? items.map((item) => item())
       : [items()]
     : [];
 
 export default defineConfig({
-  site: SITE_CONFIG.site,
-  base: SITE_CONFIG.base,
-  trailingSlash: SITE_CONFIG.trailingSlash ? 'always' : 'never',
-
   output: 'static',
 
   integrations: [
@@ -60,26 +56,32 @@ export default defineConfig({
       })
     ),
 
-    tasks(),
-
     compress({
       CSS: true,
       HTML: {
-        removeAttributeQuotes: false,
+        'html-minifier-terser': {
+          removeAttributeQuotes: false,
+        },
       },
       Image: false,
       JavaScript: true,
-      SVG: true,
+      SVG: false,
       Logger: 1,
+    }),
+
+    astrowind({
+      config: "./src/config.yaml"
     }),
   ],
 
-  markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
+  image: {
+    service: squooshImageService(),
+    domains: ["cdn.pixabay.com"],
   },
 
-  experimental:{
-    assets: true
+  markdown: {
+    remarkPlugins: [readingTimeRemarkPlugin],
+    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 
   vite: {
