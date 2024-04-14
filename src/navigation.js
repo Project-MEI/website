@@ -59,7 +59,7 @@ export const headerData = {
 		],
 	  },
   ],
-  actions: [{ type: 'button', text: 'Invite Shogun', href: 'https://dsc.gg/shogun' }],
+  actions: [{ type: 'button', text: 'Invite Shogun', href: 'https://discord.com/oauth2/authorize?client_id=617592844978487316' }],
 };
 
 export const footerData = {
